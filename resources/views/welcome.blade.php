@@ -32,10 +32,10 @@
                             <nav class="-mx-3 flex flex-1 justify-end">
                                 @auth
                                     <a
-                                        href="{{ url('/dashboard') }}"
+                                        href="{{ route('logout') }}"
                                         class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
                                     >
-                                        Dashboard
+                                        Log out
                                     </a>
                                 @else
                                     <a
@@ -45,12 +45,12 @@
                                         Log in
                                     </a>
 
-                                    @if (Route::has('register'))
+                                    @if (Route::has('signup'))
                                         <a
-                                            href="{{ route('register') }}"
+                                            href="{{ route('signup') }}"
                                             class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
                                         >
-                                            Register
+                                            Sign Up
                                         </a>
                                     @endif
                                 @endauth
