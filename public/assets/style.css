@@ -1,7 +1,11 @@
-* {
-    padding: 0;
-    margin: 0;
+html, body {
+    height: 100%;
 }
-.warning {
-    color: red;
+.wrapper {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.content {
+    flex: 1;
 }

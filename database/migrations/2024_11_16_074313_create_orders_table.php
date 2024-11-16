@@ -16,7 +16,7 @@ return new class extends Migration
             $table->text     ('comment')->nullable();
             $table->boolean  ('payment');
             $table->foreignId('user_id')->constrained();
-            $table->foreignId('status_id')->constrained();
+            $table->foreignId('status_id')->constrained('order_statuses');
             $table->timestamps();
         });
     }

@@ -6,42 +6,38 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=2.0, minimum-scale=0.5">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('assets/style.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/bootstrap.min.css') }}"/>
     <title>@yield('title', 'Bububu')</title>
 </head>
 <body>
-<header>
-    @if (Route::has('login'))
-        <nav class="-mx-3 flex flex-1 justify-end">
-            @auth
-                <a
-                    href="{{ route('logout') }}"
-                    class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
-                >
-                    Log out
-                </a>
-            @else
-                <a
-                    href="{{ route('login') }}"
-                    class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
-                >
-                    Log in
-                </a>
+<div class="wrapper">
+    <header class="bg-dark text-white py-3">
+        <div class="container d-flex justify-content-between align-items-center">
+            <h1 class="mb-0">Bububu</h1>
+            @if (Route::has('login'))
+                <nav class="d-flex align-items-center gap-2">
+                    @auth
+                        <a href="{{ route('logout') }}" class="btn btn-outline-light mr-2">Выход</a>
+                    @else
+                        <a href="{{ route('login') }}" class="btn btn-outline-light mr-2">Войти</a>
+                        @if (Route::has('signup'))
+                            <a href="{{ route('signup') }}" class="btn btn-outline-light">Регистрация</a>
+                        @endif
+                    @endauth
+                </nav>
+            @endif
+        </div>
+    </header>
 
-                @if (Route::has('signup'))
-                    <a
-                        href="{{ route('signup') }}"
-                        class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
-                    >
-                        Sign Up
-                    </a>
-                @endif
-            @endauth
-        </nav>
-    @endif
-</header>
-<main>@yield('content')</main>
-<footer>
-    Подвал
-</footer>
+    <main class="content container my-5">
+        @yield('content')
+    </main>
+
+    <footer class="bg-dark text-white py-3">
+        <div class="container text-center">
+            <p class="mb-0">&copy; 2024 Bububu Market. Все права защищены.</p>
+        </div>
+    </footer>
+</div>
 </body>
 </html>

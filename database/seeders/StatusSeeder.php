@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\OrderStatus;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class StatusSeeder extends Seeder
@@ -13,12 +12,12 @@ class StatusSeeder extends Seeder
      */
     public function run(): void
     {
-        OrderStatus::findOrCreate(['code' => 'new']);
-        OrderStatus::findOrCreate(['code' => 'inAssembly']);
-        OrderStatus::findOrCreate(['code' => 'inTransfer']);
-        OrderStatus::findOrCreate(['code' => 'onWay']);
-        OrderStatus::findOrCreate(['code' => 'delivered']);
-        OrderStatus::findOrCreate(['code' => 'cancelled']);
-        OrderStatus::findOrCreate(['code' => 'received']);
+        OrderStatus::firstOrCreate(['code' => 'new']);
+        OrderStatus::firstOrCreate(['code' => 'inAssembly']);
+        OrderStatus::firstOrCreate(['code' => 'inTransfer']);
+        OrderStatus::firstOrCreate(['code' => 'onWay']);
+        OrderStatus::firstOrCreate(['code' => 'delivered']);
+        OrderStatus::firstOrCreate(['code' => 'cancelled']);
+        OrderStatus::firstOrCreate(['code' => 'received']);
     }
 }
