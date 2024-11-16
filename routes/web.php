@@ -31,4 +31,4 @@ Route
     });
 });
 */
-Route::resource ('categories', CategoryController::class);
+Route::resource('categories', CategoryController::class);

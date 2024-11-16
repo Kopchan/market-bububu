@@ -7,7 +7,7 @@
 </div>
 <div class="row categories">
     @foreach($categories as $category)
-    <div class="col-md-4 mb-4">
+    <div class="col-md-4 mb-2">
         <div class="card">
             <div class="card-body d-flex justify-content-between align-items-center">
                 <h5 class="card-title">{{ $category->name }}</h5>

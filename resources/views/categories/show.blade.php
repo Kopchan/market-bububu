@@ -1,9 +1,9 @@
 @extends('layouts.layout')
-@section('title', 'Элемент • Bububu')
+@section('title', 'Категория '. ($category->name ? "$category->name " : '' ). '• Bububu')
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <h2>Категории товаров</h2>
-    <a class="btn btn-success" href="{{ route('categories.create') }}">Добавить категорию</a>
+    <h2>Категория{{ $category->name ? ": $category->name" : '' }}</h2>
+    <a class="btn btn-secondary" href="{{ route('categories.index') }}">К списку</a>
 </div>
 <div class="row categories">
     <div class="col-md-4 mb-4">
@@ -11,9 +11,6 @@
             <div class="card-body d-flex justify-content-between align-items-center">
                 <h5 class="card-title">{{ $category->name }}</h5>
                 <div class="d-flex gap-2">
-                    <a class="btn btn-primary btn-sm mr-2" href="{{ route('categories.show', $category->id) }}" title="Посмотреть">
-                        <img src="{{ asset('assets/images/show.png') }}" alt="Посмотреть" class="img-fluid" style="max-width: 20px; height: auto;">
-                    </a>
                     <a class="btn btn-secondary btn-sm mr-2" href="{{ route('categories.edit', $category->id) }}" title="Редактировать">
                         <img src="{{ asset('assets/images/edit.png') }}" alt="Редактировать" class="img-fluid" style="max-width: 20px; height: auto;">
                     </a>

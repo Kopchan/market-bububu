@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Web\CategoryRequest;
 use App\Models\Category;
-use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
@@ -12,19 +12,25 @@ class CategoryController extends Controller
         $categories = Category::all();
         return view('categories.index', compact('categories'));
     }
-    public function store(Request $request) {
-        $category = Category::create($request->all());
+    public function store(CategoryRequest $request) {
+        $category = Category::create($request->validated());
+        return redirect()->route('categories.index');
+    }
+    public function create() {
+        return view('categories.create');
     }
     public function show(Category $category) {
         return view('categories.show', compact('category'));
     }
-    public function update(Request $request, Category $category) {
-        $category->update($request->all());
+    public function update(CategoryRequest $request, Category $category) {
+        $category->update($request->validated());
+        return redirect()->route('categories.index');
     }
     public function edit(Category $category) {
         return view('categories.edit', compact('category'));
     }
     public function destroy(Category $category) {
         $category->delete();
+        return redirect()->route('categories.index');
     }
 }

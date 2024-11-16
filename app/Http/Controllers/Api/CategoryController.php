@@ -3,28 +3,28 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\CategoryRequest;
 use App\Models\Category;
-use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
     public function index() {
         $categories = Category::all();
-        return view('categories.index', compact('categories'));
+        return response($categories);
     }
-    public function store(Request $request) {
-        $category = Category::create($request->all());
+    public function store(CategoryRequest $request) {
+        $category = Category::create($request->validated());
+        return response($category, 201);
     }
     public function show(Category $category) {
-        return view('categories.show', compact('category'));
+        return response($category);
     }
-    public function update(Request $request, Category $category) {
-        $category->update($request->all());
-    }
-    public function edit(Category $category) {
-        return view('categories.edit', compact('category'));
+    public function update(CategoryRequest $request, Category $category) {
+        $category->update($request->validated());
+        return response($category);
     }
     public function destroy(Category $category) {
         $category->delete();
+        return response(null, 204);
     }
 }
